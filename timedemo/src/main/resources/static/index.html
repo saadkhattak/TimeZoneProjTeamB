@@ -9,20 +9,22 @@
     <button id="24hours-btn" name="24hours" onclick="formatToTwentyFour()">24 Hours</button>
     <button id="12hours-btn" name="12hours" onclick="formatToTwelve()">12 Hours</button>
     <div ng-controller="home"></div>
-
-    City: <input type="text" id="city2" name="city2"><br>
-    <input type="submit" value="Submit">
 </p>
 <div class="container">
-    <h1>Greeting</h1>
+    <h1>Time</h1>
     <div ng-controller="home" ng-cloak class="ng-cloak">
-        <p>The ID is {{greeting.id}}</p>
-        <p>The content is {{greeting.content}}</p>
         City: <select ng-model="selectedCity" ng-options="x for x in names" ng-change="getTime()">
     </select>
-        <span ng-style="{'background-color': city.backgroundCol}">>{{city.time}}</span>
+        <span ng-style="{'background-color': city.backgroundCol}">{{city.time}}</span>
         <br>
-    </div>
+  City: <select ng-model="selectedCity2" ng-options="y for y in names2" ng-change="getTime2()">
+</select>
+  <span ng-style="{'background-color': city2.backgroundCol}">{{city2.time}}</span>
+  <br>
+City: <select ng-model="selectedCity3" ng-options="z for z in names3" ng-change="getTime3()">
+</select>
+<span ng-style="{'background-color': city3.backgroundCol}">{{city3.time}}</span>
+<br>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="js/timedemo.js"></script>
