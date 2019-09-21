@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>TimeDemo</title>
+</head>
+<body ng-app="timeDemoApp">
+<p>Date/Time: <span id="datetime"></span>
+    <button id="24hours-btn" name="24hours" onclick="formatToTwentyFour()">24 Hours</button>
+    <button id="12hours-btn" name="12hours" onclick="formatToTwelve()">12 Hours</button>
+    <div ng-controller="home"></div>
+
+    City: <input type="text" id="city2" name="city2"><br>
+    <input type="submit" value="Submit">
+</p>
+<div class="container">
+    <h1>Greeting</h1>
+    <div ng-controller="home" ng-cloak class="ng-cloak">
+        <p>The ID is {{greeting.id}}</p>
+        <p>The content is {{greeting.content}}</p>
+        City: <select ng-model="selectedCity" ng-options="x for x in names" ng-change="getTime()">
+    </select>
+        <span ng-style="{'background-color': city.backgroundCol}">>{{city.time}}</span>
+        <br>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="js/timedemo.js"></script>
+<script>
+var date = new Date();
+formatToTwelve();
+
+function formatToTwelve() {
+    document.getElementById("datetime").innerHTML = date.toLocaleTimeString(undefined, { timeZoneName: 'long' });
+   document.getElementById("12hours-btn").style.display = "none";
+   document.getElementById("24hours-btn").style.display = "block";
+}
+
+function formatToTwentyFour() {
+date = new Date();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+<!--  var ampm = hours >= 12 ? 'pm' : 'am';-->
+<!--  hours = hours % 12;-->
+<!--  hours = hours ? hours : 12; // the hour '0' should be '12'-->
+<!--  minutes = minutes < 10 ? '0'+minutes : minutes;-->
+  var strTime = hours + ':' + minutes + ':' + seconds;
+  document.getElementById("datetime").innerHTML = date.toLocaleTimeString(undefined, { hour12: false, timeZoneName: 'long' });
+   document.getElementById("24hours-btn").style.display = "none";
+   document.getElementById("12hours-btn").style.display = "block";
+}
+</script>
+</body>
+</html>
